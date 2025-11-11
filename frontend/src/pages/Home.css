@@ -1,0 +1,242 @@
+html, body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  overflow-x: hidden;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-top: 70px;   /* keep navbar spacing */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+.panels {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  padding: 20px 0 20px 0; 
+  box-sizing: border-box;
+}
+
+
+/* EACH PANEL */
+.left-panel,
+.right-panel {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.editor-area {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}
+
+/* FORCE EDITOR TO FILL HEIGHT FULLY */
+.editor-area > div,
+.editor-area .cm-editor,
+.editor-area .monaco-editor {
+  flex: 1 !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  border-radius: 10px;
+  overflow: hidden !important;
+}
+
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 90px);
+}
+
+.right-panel {
+  overflow-y: auto;
+  height: calc(100vh - 90px);
+  padding-top: 40px;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+button:hover:not(:disabled) { background:#1d4ed8; }
+button:disabled { background:#93c5fd; cursor:not-allowed; }
+
+/* scrollbar */
+.right-panel::-webkit-scrollbar { width: 8px; }
+.right-panel::-webkit-scrollbar-thumb { background:#94a3b8; border-radius:10px; }
+.right-panel::-webkit-scrollbar-thumb:hover { background:#64748b; }
+
+.left-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Analyze Code button */
+.left-header button {
+  padding: 8px 20px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border: none;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.left-header button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1e40af, #1d4ed8);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.left-header button:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ======== MOBILE FULLSCREEN MODE ======== */
+.mobile-tabs {
+  display: none;
+}
+
+.mobile-fullscreen {
+  display: none;
+}
+.mobile-analyze-row{
+  display:none;
+}
+
+
+@media(max-width:900px){
+  
+  .home-container {
+    display:block;
+    width:100%;
+    margin-top:0 !important;
+    padding-top:0 !important;
+    overflow-x:visible !important;
+  }
+  .panels {
+    display:none !important;
+  }
+
+  .left-header{
+    display:none !important;
+  }
+
+  /* TABS at top */
+  .mobile-tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:12px auto 10px auto !important;
+    width:100%;
+    margin-top:0 !important;
+    margin-bottom:8px !important;
+  }
+
+  /* ANALYZE button just below tabs */
+  .mobile-analyze-row{
+    display:flex;
+    justify-content:center;
+    margin-bottom:12px !important;
+    width:100%;
+  }
+
+  .mobile-analyze-row button{
+    width:90%;
+  }
+
+  /* EDITOR and RESULT AREA */
+  .mobile-fullscreen {
+    display:block !important;
+    height:auto !important;
+    min-height:unset !important;
+    padding-top:0 !important;
+    margin-top:0 !important;
+  }
+
+  .mobile-editor, .result-area-mobile{
+    width:100%;
+    margin:0 auto;
+  }
+
+  /* only Editor screen */
+  .mobile-editor .monaco-editor, 
+  .mobile-editor .cm-editor {
+    min-height:70vh !important;
+    height:auto !important;
+  }
+
+  .monaco-editor .cursor{ background:#fff !important; }
+  .monaco-editor .view-lines{ caret-color:#fff !important; }
+
+  .monaco-editor, .monaco-editor div{
+    pointer-events:auto !important;
+    touch-action:auto !important;
+  }
+  /* Force output screen to stay aligned at the top */
+  .home-container.mobile-output {
+    display: block !important;
+    margin-top: 85px !important;
+    padding-top: 0 !important;
+    height: auto !important;
+    min-height: 100vh !important; /* maintain screen height */
+  }
+
+  /* Fix vertical alignment of empty result */
+  .result-area-mobile {
+    display: block !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    height: auto !important;
+    min-height: unset !important;
+  }
+
+  /* Make sure mobile-fullscreen never centers items vertically */
+  .mobile-fullscreen {
+    display: block !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+}
+
+
+
+

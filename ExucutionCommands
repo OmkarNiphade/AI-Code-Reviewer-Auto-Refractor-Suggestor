@@ -1,0 +1,6 @@
+1) .\venv\Scripts\Activate.ps1
+
+2) uvicorn app.main:app --reload
+
+3) npm run dev
+

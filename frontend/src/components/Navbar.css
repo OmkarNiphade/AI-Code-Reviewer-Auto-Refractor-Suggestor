@@ -1,0 +1,19 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #0f172a;
+  color: white;
+  padding: 15px 0;          /* ← remove left & right padding */
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+.navbar h2 {
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}

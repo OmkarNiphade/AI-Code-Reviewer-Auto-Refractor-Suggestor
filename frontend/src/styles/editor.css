@@ -1,0 +1,7 @@
+@media (max-width: 900px) {
+  .editor-panel {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
